@@ -31,7 +31,17 @@ def load_from_file(filename="patients.txt"):
     except Exception as e:
         print(f"Lỗi khi đọc file: {e}")
     return patient_list
-
+def save_to_file(patient_list, filename="patients.txt"):
+    """Lưu dữ liệu vào tệp văn bản [cite: 34, 46, 77]"""
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            for p in patient_list:
+                # Dùng dấu | để phân cách các trường dữ liệu
+                line = f"{p['id']}|{p['name']}|{p['age']}|{p['diagnosis']}\n"
+                f.write(line)
+        print(f"\n=> Đã lưu {len(patient_list)} bản ghi vào {filename} thành công!")
+    except Exception as e:
+        print(f"Lỗi khi lưu file: {e}")
 # ----- CORE FUNCTIONS -----
 def add_patient(patient_list):
     print("\n--- NHẬP THÔNG TIN BỆNH NHÂN MỚI ---")
@@ -69,7 +79,28 @@ def display_patients(patient_list):
     for p in patient_list:
         print(f"{p['id']:<10} | {p['name']:<25} | {p['age']:<8} | {p['diagnosis']:<25}")
     print("-"*75)
-    
+
+def search_patient(patient_list):
+    if not patient_list:
+        print("\n[!] Danh sách trống, không có dữ liệu để tìm kiếm.")
+        return
+    print("\n" + "-"*35)
+    print("      TÌM KIẾM BỆNH NHÂN")
+    print("-" * 35)
+    keyword = input("Nhập ID hoặc Tên bệnh nhân cần tìm: ").strip().lower()
+
+    results = []
+    for p in patient_list:
+        # 1. Tìm chính xác theo ID 
+        # 2. Tìm kiếm chuỗi con theo Tên (Advanced Search - khớp một phần) 
+        if keyword == p['id'].lower() or keyword in p['name'].lower():
+            results.append(p)
+
+    if results:
+        print(f"\n=> Tìm thấy {len(results)} kết quả phù hợp:")
+        display_patients(results) # Tận dụng hàm hiển thị bảng đã viết 
+    else:
+        print(f" [!] Không tìm thấy bệnh nhân nào khớp với từ khóa: '{keyword}'")
 # --- Lựa chọn ---
 def main():
     patient_records = load_from_file()
@@ -82,7 +113,7 @@ def main():
         elif choice == '2':
             display_patients(patient_records)
         elif choice == '3':
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            search_patient(patient_records)
         elif choice == '4':
             print("\n[Tính năng Sẽ cập nhật ở sau]")
         elif choice == '5':
@@ -90,6 +121,7 @@ def main():
         elif choice == '6':
             print("\n[Tính năng Sẽ cập nhật ở sau]")
         elif choice == '7':
+            save_to_file(patient_records)
             print("Hệ thống đã đóng. Cảm ơn bạn!")
             break
         else:
