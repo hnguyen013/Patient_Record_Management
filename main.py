@@ -42,6 +42,36 @@ def save_to_file(patient_list, filename="patients.txt"):
         print(f"\n=> Đã lưu {len(patient_list)} bản ghi vào {filename} thành công!")
     except Exception as e:
         print(f"Lỗi khi lưu file: {e}")
+    
+def export_report(patient_list, filename="patients_report.txt"):
+    """Ghi báo cáo thống kê ra tệp .txt cho người đọc """
+    if not patient_list:
+        print("\n[!] Không có dữ liệu để xuất báo cáo.")
+        return
+
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            # Phần 1: Tiêu đề và Thống kê tổng quát [cite: 44, 45, 54, 55]
+            f.write("=== BÁO CÁO HỆ THỐNG QUẢN LÝ PHÒNG KHÁM ===\n")
+            f.write(f"Tổng số bệnh nhân: {len(patient_list)}\n")
+            
+            # Tính toán thêm số liệu để báo cáo chuyên nghiệp hơn [cite: 44, 74, 77]
+            avg_age = sum(p['age'] for p in patient_list) / len(patient_list)
+            f.write(f"Độ tuổi trung bình: {avg_age:.1f}\n")
+            f.write("-" * 60 + "\n")
+            
+            # Phần 2: Bảng dữ liệu định dạng đẹp [cite: 38, 39, 74]
+            f.write(f"{'ID':<10} | {'Họ Tên':<25} | {'Tuổi':<8} | {'Chẩn đoán'}\n")
+            f.write("-" * 60 + "\n")
+            for p in patient_list:
+                f.write(f"{p['id']:<10} | {p['name']:<25} | {p['age']:<8} | {p['diagnosis']}\n")
+            
+            f.write("-" * 60 + "\n")
+            f.write("Báo cáo được trích xuất tự động.\n")
+            
+        print(f"=> Đã xuất báo cáo thống kê tại '{filename}' [cite: 46, 47]")
+    except Exception as e:
+        print(f"Lỗi khi xuất báo cáo: {e}")
 
 # ----- CORE FUNCTIONS -----
 def add_patient(patient_list):
@@ -180,7 +210,7 @@ def main():
             statistics_patients(patient_records)
         elif choice == '6':
             save_to_file(patient_records)
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            export_report(patient_records)
         elif choice == '7':
             save_to_file(patient_records)
             print("Hệ thống đã đóng. Cảm ơn bạn!")
