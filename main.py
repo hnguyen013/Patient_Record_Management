@@ -125,6 +125,42 @@ def sort_patients(patient_list):
     display_patients(patient_list)
 
 
+def statistics_patients(patient_list):
+    """Thực hiện tính toán và thống kê dữ liệu bệnh nhân"""
+    if not patient_list:
+        print("\n[!] Không có dữ liệu để thống kê.")
+        return
+
+    total_patients = len(patient_list)
+    
+    # 1. Tính toán cơ bản: Tuổi trung bình
+    total_age = sum(p['age'] for p in patient_list)
+    average_age = total_age / total_patients
+
+    # 2. Thống kê nâng cao: Phân nhóm theo độ tuổi (Grouping)
+    tre_em = 0    # < 18 tuổi
+    nguoi_lon = 0 # 18 - 60 tuổi
+    nguoi_gia = 0 # > 60 tuổi
+
+    for p in patient_list:
+        if p['age'] < 18:
+            tre_em += 1
+        elif p['age'] <= 60:
+            nguoi_lon += 1
+        else:
+            nguoi_gia += 1
+
+    print("\n" + "="*35)
+    print("      BÁO CÁO THỐNG KÊ Y TẾ")
+    print("="*35)
+    print(f"Tổng số bệnh nhân: {total_patients}")
+    print(f"Độ tuổi trung bình: {average_age:.1f}")
+    print("-" * 35)
+    print(f"1. Trẻ em (<18t):  {tre_em} BN ({(tre_em/total_patients)*100:.1f}%)")
+    print(f"2. Người lớn (18-60t): {nguoi_lon} BN ({(nguoi_lon/total_patients)*100:.1f}%)")
+    print(f"3. Người già (>60t):   {nguoi_gia} BN ({(nguoi_gia/total_patients)*100:.1f}%)")
+    print("="*35)
+
 # --- Lựa chọn ---
 def main():
     patient_records = load_from_file()
@@ -141,7 +177,7 @@ def main():
         elif choice == '4':
             sort_patients(patient_records)
         elif choice == '5':
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            statistics_patients(patient_records)
         elif choice == '6':
             save_to_file(patient_records)
             print("\n[Tính năng Sẽ cập nhật ở sau]")
