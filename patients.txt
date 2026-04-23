@@ -1,4 +1,6 @@
-A1|Nhi|13|Sốt
 A2|Dũng|14|Suy dinh dưỡng
-B2|Phương|35|Tan máu bẩm sinh
+A3|Lê|12|Sốt
 B1|Nha|43|Suy thoái cột sống
+A1|Nhi|13|Sốt
+B2|Phương|35|Tan máu bẩm sinh
+C1|Trần|70|Viêm họng

@@ -103,6 +103,28 @@ def search_patient(patient_list):
     else:
         print(f" [!] Không tìm thấy bệnh nhân nào khớp với từ khóa: '{keyword}'")
 
+def sort_patients(patient_list):
+    if not patient_list:
+        print("\n[!] Danh sách trống, không có dữ liệu để sắp xếp.")
+        return
+
+    print("\n--- TÙY CHỌN SẮP XẾP ---")
+    print("1. Sắp xếp theo Tên (A-Z)")
+    print("2. Sắp xếp theo Tuổi (Tăng dần)")
+    sub_choice = input("Mời bạn chọn (1-2): ")
+
+    if sub_choice == '1':
+        patient_list.sort(key=lambda x: x['name'].lower())
+        print("=> Đã sắp xếp danh sách theo Tên (A-Z).")
+    elif sub_choice == '2':
+        patient_list.sort(key=lambda x: x['age'])
+        print("=> Đã sắp xếp danh sách theo Tuổi tăng dần.")
+    else:
+        print("Lựa chọn không hợp lệ, quay lại menu chính.")
+        return
+    display_patients(patient_list)
+
+
 # --- Lựa chọn ---
 def main():
     patient_records = load_from_file()
@@ -117,7 +139,7 @@ def main():
         elif choice == '3':
             search_patient(patient_records)
         elif choice == '4':
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            sort_patients(patient_records)
         elif choice == '5':
             print("\n[Tính năng Sẽ cập nhật ở sau]")
         elif choice == '6':
