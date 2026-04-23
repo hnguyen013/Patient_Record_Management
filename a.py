@@ -42,7 +42,35 @@ def save_to_file(patient_list, filename="patients.txt"):
         print(f"\n=> Đã lưu {len(patient_list)} bản ghi vào {filename} thành công!")
     except Exception as e:
         print(f"Lỗi khi lưu file: {e}")
+def export_report(patient_list, filename="patients_report.txt"):
+    """Ghi báo cáo thống kê ra tệp .txt cho người đọc """
+    if not patient_list:
+        print("\n[!] Không có dữ liệu để xuất báo cáo.")
+        return
 
+    try:
+        with open(filename, "w", encoding="utf-8") as f:
+            # Phần 1: Tiêu đề và Thống kê tổng quát [cite: 44, 45, 54, 55]
+            f.write("=== BÁO CÁO HỆ THỐNG QUẢN LÝ PHÒNG KHÁM ===\n")
+            f.write(f"Tổng số bệnh nhân: {len(patient_list)}\n")
+            
+            # Tính toán thêm số liệu để báo cáo chuyên nghiệp hơn [cite: 44, 74, 77]
+            avg_age = sum(p['age'] for p in patient_list) / len(patient_list)
+            f.write(f"Độ tuổi trung bình: {avg_age:.1f}\n")
+            f.write("-" * 60 + "\n")
+            
+            # Phần 2: Bảng dữ liệu định dạng đẹp [cite: 38, 39, 74]
+            f.write(f"{'ID':<10} | {'Họ Tên':<25} | {'Tuổi':<8} | {'Chẩn đoán'}\n")
+            f.write("-" * 60 + "\n")
+            for p in patient_list:
+                f.write(f"{p['id']:<10} | {p['name']:<25} | {p['age']:<8} | {p['diagnosis']}\n")
+            
+            f.write("-" * 60 + "\n")
+            f.write("Báo cáo được trích xuất tự động.\n")
+            
+        print(f"=> Đã xuất báo cáo thống kê tại '{filename}' [cite: 46, 47]")
+    except Exception as e:
+        print(f"Lỗi khi xuất báo cáo: {e}")
 # ----- CORE FUNCTIONS -----
 def add_patient(patient_list):
     print("\n--- NHẬP THÔNG TIN BỆNH NHÂN MỚI ---")
@@ -103,6 +131,63 @@ def search_patient(patient_list):
     else:
         print(f" [!] Không tìm thấy bệnh nhân nào khớp với từ khóa: '{keyword}'")
 
+def sort_patients(patient_list):
+    if not patient_list:
+        print("\n[!] Danh sách trống, không có dữ liệu để sắp xếp.")
+        return
+
+    print("\n--- TÙY CHỌN SẮP XẾP ---")
+    print("1. Sắp xếp theo Tên (A-Z)")
+    print("2. Sắp xếp theo Tuổi (Tăng dần)")
+    sub_choice = input("Mời bạn chọn (1-2): ")
+
+    if sub_choice == '1':
+        patient_list.sort(key=lambda x: x['name'].lower())
+        print("=> Đã sắp xếp danh sách theo Tên (A-Z).")
+    elif sub_choice == '2':
+        patient_list.sort(key=lambda x: x['age'])
+        print("=> Đã sắp xếp danh sách theo Tuổi tăng dần.")
+    else:
+        print("Lựa chọn không hợp lệ, quay lại menu chính.")
+        return
+    display_patients(patient_list)
+
+def statistics_patients(patient_list):
+    """Thực hiện tính toán và thống kê dữ liệu bệnh nhân"""
+    if not patient_list:
+        print("\n[!] Không có dữ liệu để thống kê.")
+        return
+
+    total_patients = len(patient_list)
+    
+    # 1. Tính toán cơ bản: Tuổi trung bình
+    total_age = sum(p['age'] for p in patient_list)
+    average_age = total_age / total_patients
+
+    # 2. Thống kê nâng cao: Phân nhóm theo độ tuổi (Grouping)
+    tre_em = 0    # < 18 tuổi
+    nguoi_lon = 0 # 18 - 60 tuổi
+    nguoi_gia = 0 # > 60 tuổi
+
+    for p in patient_list:
+        if p['age'] < 18:
+            tre_em += 1
+        elif p['age'] <= 60:
+            nguoi_lon += 1
+        else:
+            nguoi_gia += 1
+
+    print("\n" + "="*35)
+    print("      BÁO CÁO THỐNG KÊ Y TẾ")
+    print("="*35)
+    print(f"Tổng số bệnh nhân: {total_patients}")
+    print(f"Độ tuổi trung bình: {average_age:.1f}")
+    print("-" * 35)
+    print(f"1. Trẻ em (<18t):  {tre_em} BN ({(tre_em/total_patients)*100:.1f}%)")
+    print(f"2. Người lớn (18-60t): {nguoi_lon} BN ({(nguoi_lon/total_patients)*100:.1f}%)")
+    print(f"3. Người già (>60t):   {nguoi_gia} BN ({(nguoi_gia/total_patients)*100:.1f}%)")
+    print("="*35)
+
 # --- Lựa chọn ---
 def main():
     patient_records = load_from_file()
@@ -117,12 +202,12 @@ def main():
         elif choice == '3':
             search_patient(patient_records)
         elif choice == '4':
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            sort_patients(patient_records)
         elif choice == '5':
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            statistics_patients(patient_records)
         elif choice == '6':
             save_to_file(patient_records)
-            print("\n[Tính năng Sẽ cập nhật ở sau]")
+            export_report(patient_records)
         elif choice == '7':
             save_to_file(patient_records)
             print("Hệ thống đã đóng. Cảm ơn bạn!")
