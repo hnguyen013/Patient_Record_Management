@@ -42,7 +42,6 @@ def save_to_file(patient_list, filename="patients.txt"):
         print(f"\n=> Đã lưu {len(patient_list)} bản ghi vào {filename} thành công!")
     except Exception as e:
         print(f"Lỗi khi lưu file: {e}")
-    
 def export_report(patient_list, filename="patients_report.txt"):
     """Ghi báo cáo thống kê ra tệp .txt cho người đọc """
     if not patient_list:
@@ -72,7 +71,6 @@ def export_report(patient_list, filename="patients_report.txt"):
         print(f"=> Đã xuất báo cáo thống kê tại '{filename}' [cite: 46, 47]")
     except Exception as e:
         print(f"Lỗi khi xuất báo cáo: {e}")
-
 # ----- CORE FUNCTIONS -----
 def add_patient(patient_list):
     print("\n--- NHẬP THÔNG TIN BỆNH NHÂN MỚI ---")
@@ -153,7 +151,6 @@ def sort_patients(patient_list):
         print("Lựa chọn không hợp lệ, quay lại menu chính.")
         return
     display_patients(patient_list)
-
 
 def statistics_patients(patient_list):
     """Thực hiện tính toán và thống kê dữ liệu bệnh nhân"""
