@@ -1,4 +1,5 @@
 import os
+import json
 from prettytable import PrettyTable
 
 # --- UTILITY FUNCTIONS ---
@@ -16,39 +17,27 @@ def display_menu():
     print("-" * 45)
 
 
-def load_from_file(filename="patients.txt"):
+def load_from_file(filename="patients.json"):
     patient_list = []
     if not os.path.exists(filename):
         return patient_list
 
     try:
         with open(filename, "r", encoding="utf-8") as f:
-            for line in f:
-                parts = line.strip().split("|")
-                if len(parts) == 4:
-                    patient = {
-                        "id": parts[0],
-                        "name": parts[1],
-                        "age": int(parts[2]),
-                        "diagnosis": parts[3]
-                    }
-                    patient_list.append(patient)
+            patient_list = json.load(f)
     except Exception as e:
         print(f"Lỗi khi đọc file: {e}")
 
     return patient_list
 
 
-def save_to_file(patient_list, filename="patients.txt"):
+def save_to_file(patient_list, filename="patients.json"):
     try:
         with open(filename, "w", encoding="utf-8") as f:
-            for p in patient_list:
-                line = f"{p['id']}|{p['name']}|{p['age']}|{p['diagnosis']}\n"
-                f.write(line)
+            json.dump(patient_list, f, ensure_ascii=False, indent=4)
         print(f"\n=> Đã lưu {len(patient_list)} bản ghi vào {filename} thành công!")
     except Exception as e:
         print(f"Lỗi khi lưu file: {e}")
-
 
 def build_pretty_table(patient_list, title="DANH SÁCH BỆNH NHÂN"):
     table = PrettyTable()

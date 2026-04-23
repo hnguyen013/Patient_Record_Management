@@ -1,0 +1,20 @@
+[
+    {
+        "id": "A1",
+        "name": "Nhi",
+        "age": 12,
+        "diagnosis": "Sốt nhẹ"
+    },
+    {
+        "id": "B1",
+        "name": "An",
+        "age": 25,
+        "diagnosis": "Đau lưng"
+    },
+    {
+        "id": "A2",
+        "name": "Dũng",
+        "age": 15,
+        "diagnosis": "Nhiệt miệng"
+    }
+]
