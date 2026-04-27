@@ -1,4 +1,4 @@
-# Hệ thống quản lý bệnh án phòng khám
+# Hệ thống quản lý bệnh án
 
 ## 1. Giới thiệu dự án
 
