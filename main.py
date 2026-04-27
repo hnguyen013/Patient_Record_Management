@@ -1,6 +1,8 @@
 import os
 import json
 from prettytable import PrettyTable
+from datetime import datetime
+
 
 # --- UTILITY FUNCTIONS ---
 def display_menu():
@@ -56,12 +58,15 @@ def build_pretty_table(patient_list, title="DANH SÁCH BỆNH NHÂN"):
 
 def export_report(patient_list, filename="patients_report.txt"):
     if not patient_list:
-        print("\n[!] Không có dữ liệu để xuất báo cáo.")
+        print("\nKhông có dữ liệu để xuất báo cáo.")
         return
 
     try:
         with open(filename, "w", encoding="utf-8") as f:
+            report_time = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
             f.write("=== BÁO CÁO HỆ THỐNG QUẢN LÝ PHÒNG KHÁM ===\n")
+            f.write(f"Thời gian xuất báo cáo: {report_time}\n")
             f.write(f"Tổng số bệnh nhân: {len(patient_list)}\n")
 
             avg_age = sum(p['age'] for p in patient_list) / len(patient_list)
