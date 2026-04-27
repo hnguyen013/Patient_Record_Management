@@ -12,11 +12,11 @@ Dự án được thực hiện nhằm vận dụng các kiến thức đã họ
 
 ## 2. Đề tài lựa chọn
 
-**Topic 7: Patient/Clinic Record Management**
+**Topic 7: Patient Record Management**
 
 Tên đề tài tiếng Việt:
 
-**Hệ thống quản lý bệnh án/phòng khám cơ bản**
+**Hệ thống quản lý bệnh án**
 
 Đề tài tập trung xây dựng một chương trình đơn giản để quản lý thông tin bệnh nhân trong phòng khám. Mỗi bệnh nhân có các thông tin cơ bản gồm mã bệnh nhân, họ tên, tuổi và chẩn đoán bệnh.
 
