@@ -4,7 +4,7 @@
 
 Đây là chương trình quản lý bệnh án phòng khám cơ bản, được xây dựng bằng ngôn ngữ Python theo phương pháp lập trình thủ tục.
 
-Chương trình chạy trên giao diện dòng lệnh, cho phép người dùng quản lý danh sách bệnh nhân, tìm kiếm bệnh nhân, sắp xếp dữ liệu, thống kê thông tin, lưu dữ liệu và xuất báo cáo.
+Chương trình chạy trên giao diện dòng lệnh, cho phép người dùng quản lý danh sách bệnh nhân, tìm kiếm bệnh nhân, sắp xếp dữ liệu, chỉnh sửa thông tin, xóa bệnh nhân, thống kê số liệu, lưu dữ liệu và xuất báo cáo.
 
 Dự án được thực hiện nhằm vận dụng các kiến thức đã học về hàm, vòng lặp, cấu trúc điều kiện, xử lý dữ liệu và xử lý tệp trong Python.
 
@@ -12,11 +12,11 @@ Dự án được thực hiện nhằm vận dụng các kiến thức đã họ
 
 ## 2. Đề tài lựa chọn
 
-**Topic 7: Patient Record Management**
+**Topic 7: Patient/Clinic Record Management**
 
 Tên đề tài tiếng Việt:
 
-**Hệ thống quản lý bệnh án cơ bản**
+**Hệ thống quản lý bệnh án/phòng khám cơ bản**
 
 Đề tài tập trung xây dựng một chương trình đơn giản để quản lý thông tin bệnh nhân trong phòng khám. Mỗi bệnh nhân có các thông tin cơ bản gồm mã bệnh nhân, họ tên, tuổi và chẩn đoán bệnh.
 
@@ -46,11 +46,19 @@ Chương trình gồm các chức năng chính sau:
 
    Chương trình thống kê tổng số bệnh nhân, tính độ tuổi trung bình và phân nhóm bệnh nhân theo độ tuổi.
 
-6. **Lưu dữ liệu**
+6. **Chỉnh sửa thông tin bệnh nhân**
+
+   Người dùng có thể chỉnh sửa họ tên, tuổi hoặc chẩn đoán của bệnh nhân dựa trên mã ID.
+
+7. **Xóa thông tin bệnh nhân**
+
+   Người dùng có thể xóa bệnh nhân khỏi danh sách dựa trên mã ID. Trước khi xóa, chương trình sẽ yêu cầu xác nhận để tránh xóa nhầm.
+
+8. **Lưu dữ liệu**
 
    Dữ liệu bệnh nhân được lưu lại để khi mở chương trình lần sau vẫn có thể tiếp tục sử dụng.
 
-7. **Xuất báo cáo**
+9. **Xuất báo cáo**
 
    Chương trình có thể xuất báo cáo tổng hợp ra file văn bản để người dùng xem hoặc nộp.
 
@@ -142,6 +150,13 @@ Nếu chạy bằng Terminal hoặc Command Prompt, mở thư mục chứa file 
 python main.py
 ```
 
+Nếu chạy bằng PyCharm:
+
+1. Mở thư mục dự án trong PyCharm.
+2. Mở file `main.py`.
+3. Nhấn nút **Run**.
+4. Sử dụng các chức năng theo menu hiển thị trong cửa sổ console.
+
 ---
 
 ## 10. Menu chương trình
@@ -157,12 +172,14 @@ Khi chạy chương trình, hệ thống sẽ hiển thị menu như sau:
 3. Tìm kiếm bệnh nhân (Theo ID hoặc Tên)
 4. Sắp xếp danh sách bệnh nhân
 5. Thống kê & Tính toán số liệu
-6. Lưu dữ liệu JSON và xuất báo cáo TXT
-7. Thoát chương trình
+6. Chỉnh sửa thông tin bệnh nhân
+7. Xóa thông tin bệnh nhân
+8. Lưu dữ liệu và xuất báo cáo (.txt)
+9. Thoát chương trình
 ---------------------------------------------
 ```
 
-Người dùng nhập số từ 1 đến 7 để chọn chức năng tương ứng.
+Người dùng nhập số từ 1 đến 9 để chọn chức năng tương ứng.
 
 ---
 
@@ -189,12 +206,14 @@ Các trường họ tên và chẩn đoán là dữ liệu dạng văn bản nê
 | `load_from_file()` | Tải dữ liệu từ file JSON |
 | `save_to_file()` | Lưu dữ liệu vào file JSON |
 | `build_pretty_table()` | Tạo bảng hiển thị dữ liệu |
+| `export_report()` | Xuất báo cáo ra file TXT |
 | `add_patient()` | Thêm bệnh nhân mới |
 | `display_patients()` | Hiển thị danh sách bệnh nhân |
 | `search_patient()` | Tìm kiếm bệnh nhân |
 | `sort_patients()` | Sắp xếp danh sách bệnh nhân |
 | `statistics_patients()` | Thống kê dữ liệu bệnh nhân |
-| `export_report()` | Xuất báo cáo ra file TXT |
+| `update_patient()` | Chỉnh sửa thông tin bệnh nhân |
+| `delete_patient()` | Xóa thông tin bệnh nhân |
 | `main()` | Điều khiển luồng chạy chính của chương trình |
 
 ---
@@ -214,6 +233,10 @@ Ngoài các chức năng cơ bản, chương trình còn có một số chức n
 3. **Lưu trữ dữ liệu bằng JSON**
 
    Chương trình sử dụng file JSON để lưu trữ dữ liệu có cấu trúc, giúp việc đọc và ghi dữ liệu thuận tiện hơn.
+
+4. **Chỉnh sửa và xóa dữ liệu**
+
+   Chương trình cho phép cập nhật hoặc xóa thông tin bệnh nhân theo mã ID, giúp hệ thống có tính ứng dụng thực tế hơn.
 
 ---
 
@@ -255,7 +278,8 @@ Tổng số bệnh nhân: 2
 - Dữ liệu được tự động tải từ file `patients.json` khi chương trình bắt đầu.
 - Dữ liệu được lưu lại khi người dùng chọn chức năng lưu hoặc thoát chương trình.
 - File `patients_report.txt` được tạo khi người dùng chọn chức năng xuất báo cáo.
-- Nếu file `patients.json` chưa tồn tại, chương trình sẽ tự tạo dữ liệu mới trong quá trình sử dụng.
+- Nếu file `patients.json` chưa tồn tại, chương trình sẽ bắt đầu với danh sách bệnh nhân rỗng.
+- Sau khi thêm, chỉnh sửa hoặc xóa dữ liệu, người dùng nên chọn chức năng lưu hoặc thoát chương trình để dữ liệu được ghi vào file.
 
 ---
 

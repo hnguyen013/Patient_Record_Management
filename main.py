@@ -14,8 +14,10 @@ def display_menu():
     print("3. Tìm kiếm bệnh nhân (Theo ID hoặc Tên)")
     print("4. Sắp xếp danh sách bệnh nhân")
     print("5. Thống kê & Tính toán số liệu")
-    print("6. Lưu dữ liệu và xuất báo cáo (.txt)")
-    print("7. Thoát chương trình")
+    print("6. Chỉnh sửa thông tin bệnh nhân")
+    print("7. Xóa thông tin bệnh nhân")
+    print("8. Lưu dữ liệu và xuất báo cáo (.txt)")
+    print("9. Thoát chương trình")
     print("-" * 45)
 
 
@@ -119,6 +121,73 @@ def add_patient(patient_list):
     patient_list.append(new_patient)
     print("=> Đã thêm bệnh nhân thành công!")
 
+def update_patient(patient_list):
+    if not patient_list:
+        print("\n[!] Danh sách trống, không có dữ liệu để chỉnh sửa.")
+        return
+
+    print("\n--- CHỈNH SỬA THÔNG TIN BỆNH NHÂN ---")
+    p_id = input("Nhập ID bệnh nhân cần chỉnh sửa: ").strip()
+
+    for p in patient_list:
+        if p["id"].lower() == p_id.lower():
+            print("\nThông tin hiện tại của bệnh nhân:")
+            table = build_pretty_table([p], title="BỆNH NHÂN CẦN CHỈNH SỬA")
+            print(table)
+
+            print("\nNhấn Enter nếu muốn giữ nguyên thông tin cũ.")
+
+            new_name = input(f"Họ tên mới ({p['name']}): ").strip()
+            if new_name:
+                p["name"] = new_name
+
+            while True:
+                new_age = input(f"Tuổi mới ({p['age']}): ").strip()
+                if not new_age:
+                    break
+                try:
+                    new_age = int(new_age)
+                    if 0 < new_age < 150:
+                        p["age"] = new_age
+                        break
+                    else:
+                        print("Lỗi: Tuổi phải nằm trong khoảng 1-150!")
+                except ValueError:
+                    print("Lỗi: Vui lòng nhập số nguyên cho tuổi!")
+
+            new_diagnosis = input(f"Chẩn đoán mới ({p['diagnosis']}): ").strip()
+            if new_diagnosis:
+                p["diagnosis"] = new_diagnosis
+
+            print("=> Đã cập nhật thông tin bệnh nhân thành công!")
+            return
+
+    print(f"[!] Không tìm thấy bệnh nhân có ID: {p_id}") 
+
+def delete_patient(patient_list):
+    if not patient_list:
+        print("\n[!] Danh sách trống, không có dữ liệu để xóa.")
+        return
+
+    print("\n--- XÓA THÔNG TIN BỆNH NHÂN ---")
+    p_id = input("Nhập ID bệnh nhân cần xóa: ").strip()
+
+    for p in patient_list:
+        if p["id"].lower() == p_id.lower():
+            print("\nThông tin bệnh nhân cần xóa:")
+            table = build_pretty_table([p], title="BỆNH NHÂN CẦN XÓA")
+            print(table)
+
+            confirm = input("Bạn có chắc chắn muốn xóa bệnh nhân này không? (y/n): ").strip().lower()
+
+            if confirm == "y":
+                patient_list.remove(p)
+                print("=> Đã xóa bệnh nhân thành công!")
+            else:
+                print("=> Đã hủy thao tác xóa.")
+            return
+
+    print(f"[!] Không tìm thấy bệnh nhân có ID: {p_id}")
 
 def display_patients(patient_list):
     if not patient_list:
@@ -214,7 +283,7 @@ def main():
 
     while True:
         display_menu()
-        choice = input("Mời bạn chọn chức năng (1-7): ")
+        choice = input("Mời bạn chọn chức năng (1-9): ")
 
         if choice == '1':
             add_patient(patient_records)
@@ -227,14 +296,18 @@ def main():
         elif choice == '5':
             statistics_patients(patient_records)
         elif choice == '6':
+            update_patient(patient_records)
+        elif choice == '7':
+            delete_patient(patient_records)
+        elif choice == '8':
             save_to_file(patient_records)
             export_report(patient_records)
-        elif choice == '7':
+        elif choice == '9':
             save_to_file(patient_records)
             print("Hệ thống đã đóng. Cảm ơn bạn!")
             break
         else:
-            print("Lựa chọn không hợp lệ! Vui lòng nhập từ 1 đến 7.")
+            print("Lựa chọn không hợp lệ! Vui lòng nhập từ 1 đến 9.")
 
 
 if __name__ == "__main__":
