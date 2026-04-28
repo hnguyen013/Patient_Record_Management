@@ -6,15 +6,27 @@
         "diagnosis": "Sốt nhẹ"
     },
     {
+        "id": "A2",
+        "name": "Dũng",
+        "age": 16,
+        "diagnosis": "Nhiệt miệng"
+    },
+    {
         "id": "B1",
         "name": "An",
         "age": 25,
         "diagnosis": "Đau lưng"
     },
     {
-        "id": "A2",
-        "name": "Dũng",
-        "age": 16,
-        "diagnosis": "Nhiệt miệng"
+        "id": "B2",
+        "name": "Trần",
+        "age": 45,
+        "diagnosis": "Đau lưng"
+    },
+    {
+        "id": "C1",
+        "name": "Lê",
+        "age": 67,
+        "diagnosis": "Thoát hóa cột sống"
     }
 ]

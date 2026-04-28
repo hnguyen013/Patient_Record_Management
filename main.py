@@ -98,7 +98,12 @@ def add_patient(patient_list):
         else:
             break
 
-    name = input("Nhập Họ và Tên: ").strip()
+    while True:
+        name = input("Nhập Họ và Tên: ").strip()
+        if name:
+            break
+        else:
+            print("Lỗi: Họ tên không được để trống!")
 
     while True:
         try:
