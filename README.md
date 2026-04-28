@@ -1,12 +1,20 @@
-# Hệ thống quản lý bệnh án
+# HỆ THỐNG QUẢN LÝ BỆNH ÁN
 
 ## 1. Giới thiệu dự án
 
-Đây là chương trình quản lý bệnh án phòng khám cơ bản, được xây dựng bằng ngôn ngữ Python theo phương pháp lập trình thủ tục.
+Đây là chương trình **quản lý bệnh án phòng khám cơ bản**, được xây dựng bằng ngôn ngữ lập trình **Python** theo phương pháp **lập trình thủ tục**.
 
-Chương trình chạy trên giao diện dòng lệnh, cho phép người dùng quản lý danh sách bệnh nhân, tìm kiếm bệnh nhân, sắp xếp dữ liệu, chỉnh sửa thông tin, xóa bệnh nhân, thống kê số liệu, lưu dữ liệu và xuất báo cáo.
+Chương trình chạy trên môi trường **CLI – Command Line Interface**, cho phép người dùng thao tác trực tiếp thông qua menu trong cửa sổ console. Hệ thống hỗ trợ quản lý danh sách bệnh nhân, bao gồm các chức năng như thêm bệnh nhân, hiển thị danh sách, tìm kiếm, sắp xếp, thống kê, chỉnh sửa, xóa dữ liệu, lưu dữ liệu và xuất báo cáo.
 
-Dự án được thực hiện nhằm vận dụng các kiến thức đã học về hàm, vòng lặp, cấu trúc điều kiện, xử lý dữ liệu và xử lý tệp trong Python.
+Dự án được thực hiện nhằm vận dụng các kiến thức đã học trong học phần **Phương pháp lập trình**, bao gồm:
+
+- Sử dụng hàm để chia nhỏ chương trình.
+- Sử dụng vòng lặp để xây dựng menu tương tác.
+- Sử dụng cấu trúc điều kiện để xử lý lựa chọn của người dùng.
+- Sử dụng danh sách và từ điển để quản lý dữ liệu.
+- Kiểm tra dữ liệu đầu vào.
+- Đọc, ghi và xuất dữ liệu ra file.
+- Trình bày dữ liệu dưới dạng bảng có định dạng.
 
 ---
 
@@ -18,85 +26,76 @@ Tên đề tài tiếng Việt:
 
 **Hệ thống quản lý bệnh án**
 
-Đề tài tập trung xây dựng một chương trình đơn giản để quản lý thông tin bệnh nhân trong phòng khám. Mỗi bệnh nhân có các thông tin cơ bản gồm mã bệnh nhân, họ tên, tuổi và chẩn đoán bệnh.
-
----
-
-## 3. Chức năng chính của chương trình
-
-Chương trình gồm các chức năng chính sau:
-
-1. **Tiếp nhận bệnh nhân mới**
-
-   Người dùng có thể nhập thông tin bệnh nhân gồm mã bệnh nhân, họ tên, tuổi và chẩn đoán.
-
-2. **Hiển thị danh sách bệnh án**
-
-   Chương trình hiển thị toàn bộ danh sách bệnh nhân dưới dạng bảng rõ ràng, dễ quan sát.
-
-3. **Tìm kiếm bệnh nhân**
-
-   Người dùng có thể tìm kiếm bệnh nhân theo mã ID hoặc theo tên. Chức năng tìm kiếm theo tên có hỗ trợ tìm gần đúng.
-
-4. **Sắp xếp danh sách bệnh nhân**
-
-   Chương trình cho phép sắp xếp danh sách bệnh nhân theo tên hoặc theo tuổi.
-
-5. **Thống kê và tính toán số liệu**
-
-   Chương trình thống kê tổng số bệnh nhân, tính độ tuổi trung bình và phân nhóm bệnh nhân theo độ tuổi.
-
-6. **Chỉnh sửa thông tin bệnh nhân**
-
-   Người dùng có thể chỉnh sửa họ tên, tuổi hoặc chẩn đoán của bệnh nhân dựa trên mã ID.
-
-7. **Xóa thông tin bệnh nhân**
-
-   Người dùng có thể xóa bệnh nhân khỏi danh sách dựa trên mã ID. Trước khi xóa, chương trình sẽ yêu cầu xác nhận để tránh xóa nhầm.
-
-8. **Lưu dữ liệu**
-
-   Dữ liệu bệnh nhân được lưu lại để khi mở chương trình lần sau vẫn có thể tiếp tục sử dụng.
-
-9. **Xuất báo cáo**
-
-   Chương trình có thể xuất báo cáo tổng hợp ra file văn bản để người dùng xem hoặc nộp.
-
----
-
-## 4. Công nghệ sử dụng
-
-Dự án sử dụng các công nghệ và thư viện sau:
-
-- Python
-- PrettyTable
-- JSON
-- File TXT
-- Giao diện dòng lệnh
-
----
-
-## 5. Cấu trúc dữ liệu
-
-Mỗi bệnh nhân được lưu dưới dạng một bản ghi gồm các thông tin:
+Đề tài tập trung xây dựng một chương trình đơn giản để quản lý thông tin bệnh nhân trong phòng khám. Mỗi bệnh nhân được xem là một bản ghi dữ liệu, gồm các thông tin cơ bản như:
 
 - Mã bệnh nhân
 - Họ và tên
 - Tuổi
 - Chẩn đoán bệnh
 
-Ví dụ một bản ghi bệnh nhân:
+---
 
-```json
-{
-    "id": "BN01",
-    "name": "Nguyen Van A",
-    "age": 25,
-    "diagnosis": "Cam cum"
-}
-```
+## 3. Mục tiêu của chương trình
 
-Danh sách bệnh nhân sẽ được lưu dưới dạng một danh sách các bản ghi.
+Chương trình được xây dựng với các mục tiêu chính sau:
+
+1. Giúp người dùng quản lý danh sách bệnh nhân một cách đơn giản.
+2. Cho phép thêm, xem, tìm kiếm, sắp xếp, chỉnh sửa và xóa thông tin bệnh nhân.
+3. Hỗ trợ thống kê số lượng bệnh nhân và độ tuổi trung bình.
+4. Hỗ trợ phân nhóm bệnh nhân theo độ tuổi.
+5. Lưu dữ liệu để có thể sử dụng lại trong các lần chạy chương trình sau.
+6. Xuất báo cáo tổng hợp ra file văn bản.
+7. Rèn luyện tư duy lập trình thủ tục và cách tổ chức chương trình theo từng hàm riêng biệt.
+
+---
+
+## 4. Công nghệ và thư viện sử dụng
+
+Dự án sử dụng các công nghệ và thư viện sau:
+
+| Thành phần | Vai trò |
+|---|---|
+| Python | Ngôn ngữ lập trình chính |
+| PrettyTable | Hiển thị dữ liệu dưới dạng bảng đẹp, dễ nhìn |
+| JSON | Lưu trữ dữ liệu bệnh nhân có cấu trúc |
+| TXT | Xuất báo cáo thống kê dạng văn bản |
+| CLI | Giao diện dòng lệnh để người dùng tương tác với chương trình |
+
+Thư viện ngoài cần cài đặt:
+
+    pip install prettytable
+
+---
+
+## 5. Cấu trúc dữ liệu
+
+Trong chương trình, mỗi bệnh nhân được lưu dưới dạng một dictionary gồm các trường thông tin:
+
+    {
+        "id": "BN01",
+        "name": "Nguyen Van A",
+        "age": 25,
+        "diagnosis": "Cam cum"
+    }
+
+Danh sách bệnh nhân được lưu trong một list:
+
+    patients = [
+        {
+            "id": "BN01",
+            "name": "Nguyen Van A",
+            "age": 25,
+            "diagnosis": "Cam cum"
+        },
+        {
+            "id": "BN02",
+            "name": "Tran Thi B",
+            "age": 40,
+            "diagnosis": "Dau dau"
+        }
+    ]
+
+Cách tổ chức này giúp chương trình dễ dàng thêm, sửa, xóa, tìm kiếm, sắp xếp và thống kê dữ liệu.
 
 ---
 
@@ -105,185 +104,259 @@ Danh sách bệnh nhân sẽ được lưu dưới dạng một danh sách các 
 | Tên file | Chức năng |
 |---|---|
 | `main.py` | File chứa mã nguồn chính của chương trình |
-| `patients.json` | File lưu trữ dữ liệu bệnh nhân |
-| `patients_report.txt` | File báo cáo được xuất ra từ chương trình |
-| `README.md` | File mô tả dự án và hướng dẫn sử dụng |
+| `patients.json` | File lưu trữ dữ liệu bệnh nhân dưới dạng JSON |
+| `patients_report.txt` | File báo cáo thống kê được xuất ra từ chương trình |
+| `README.md` | File mô tả dự án, hướng dẫn chạy chương trình và tự đánh giá |
 
 ---
 
-## 7. Giải thích việc sử dụng file JSON và TXT
 
-Trong chương trình có sử dụng cả file JSON và file TXT vì hai loại file này có mục đích khác nhau.
+## 7. Chức năng chính của chương trình
 
-File `patients.json` được dùng để lưu trữ dữ liệu chính của chương trình. JSON có cấu trúc rõ ràng, phù hợp để lưu danh sách bệnh nhân và đọc lại dữ liệu khi chạy chương trình lần sau.
+Chương trình có các chức năng chính sau:
 
-File `patients_report.txt` được dùng để xuất báo cáo tổng hợp. File TXT có dạng văn bản đơn giản, dễ mở, dễ đọc và phù hợp để nộp hoặc in báo cáo.
+### 7.1. Tiếp nhận bệnh nhân mới
 
-Tóm lại:
+Người dùng có thể nhập thông tin bệnh nhân mới gồm:
 
-| Loại file | Vai trò |
+- Mã bệnh nhân
+- Họ và tên
+- Tuổi
+- Chẩn đoán bệnh
+
+Chương trình có kiểm tra dữ liệu đầu vào để hạn chế lỗi khi nhập.
+
+### 7.2. Hiển thị danh sách bệnh án
+
+Chức năng này hiển thị toàn bộ danh sách bệnh nhân hiện có trong hệ thống dưới dạng bảng rõ ràng.
+
+Thông tin hiển thị gồm:
+
+- ID
+- Họ tên
+- Tuổi
+- Chẩn đoán
+
+Dữ liệu được trình bày bằng thư viện PrettyTable nên dễ quan sát hơn so với việc in dữ liệu thông thường.
+
+### 7.3. Tìm kiếm bệnh nhân
+
+Chương trình hỗ trợ tìm kiếm bệnh nhân theo:
+
+- Mã bệnh nhân
+- Họ tên bệnh nhân
+
+Ngoài tìm kiếm theo mã ID chính xác, chương trình còn hỗ trợ tìm kiếm gần đúng theo tên. Ví dụ, người dùng chỉ cần nhập một phần tên, chương trình vẫn có thể tìm các bệnh nhân phù hợp.
+
+### 7.4. Sắp xếp danh sách bệnh nhân
+
+Chương trình cho phép sắp xếp danh sách bệnh nhân theo các tiêu chí như:
+
+- Sắp xếp theo tên
+- Sắp xếp theo tuổi
+
+Chức năng này giúp dữ liệu dễ theo dõi hơn, đặc biệt khi danh sách bệnh nhân có nhiều bản ghi.
+
+### 7.5. Thống kê và tính toán số liệu
+
+Chương trình thực hiện các thống kê cơ bản trên tập dữ liệu bệnh nhân, gồm:
+
+- Tổng số bệnh nhân
+- Độ tuổi trung bình
+- Số lượng bệnh nhân theo nhóm tuổi
+
+Các nhóm tuổi được phân loại như sau:
+
+| Nhóm tuổi | Điều kiện |
 |---|---|
-| JSON | Lưu trữ dữ liệu chính của chương trình |
-| TXT | Xuất báo cáo cho người dùng |
+| Trẻ em | Dưới 18 tuổi |
+| Người lớn | Từ 18 đến 60 tuổi |
+| Người già | Trên 60 tuổi |
+
+### 7.6. Chỉnh sửa thông tin bệnh nhân
+
+Người dùng có thể chỉnh sửa thông tin bệnh nhân dựa trên mã ID.
+
+Các thông tin có thể chỉnh sửa gồm:
+
+- Họ tên
+- Tuổi
+- Chẩn đoán bệnh
+
+Chức năng này giúp cập nhật dữ liệu khi thông tin bệnh nhân có thay đổi.
+
+### 7.7. Xóa thông tin bệnh nhân
+
+Người dùng có thể xóa bệnh nhân khỏi danh sách thông qua mã ID.
+
+Trước khi xóa, chương trình yêu cầu người dùng xác nhận để tránh trường hợp xóa nhầm dữ liệu.
+
+### 7.8. Lưu dữ liệu
+
+Chương trình có chức năng lưu dữ liệu bệnh nhân vào file `patients.json`.
+
+Khi mở chương trình ở lần sau, dữ liệu đã lưu có thể được tải lại để tiếp tục sử dụng.
+
+### 7.9. Xuất báo cáo
+
+Chương trình có thể xuất báo cáo thống kê ra file `patients_report.txt`.
+
+Báo cáo giúp tổng hợp tình trạng dữ liệu hiện tại của hệ thống và có thể dùng để xem lại hoặc nộp bài.
 
 ---
 
-## 8. Cài đặt thư viện cần thiết
-
-Trước khi chạy chương trình, cần cài đặt thư viện PrettyTable bằng lệnh:
-
-```bash
-pip install prettytable
-```
-
-Nếu máy đã cài thư viện này thì có thể bỏ qua bước trên.
-
----
-
-## 9. Cách chạy chương trình
-
-Có thể chạy chương trình bằng Terminal, Command Prompt hoặc PyCharm.
-
-Nếu chạy bằng Terminal hoặc Command Prompt, mở thư mục chứa file chương trình và nhập lệnh:
-
-```bash
-python main.py
-```
-
-Nếu chạy bằng PyCharm:
-
-1. Mở thư mục dự án trong PyCharm.
-2. Mở file `main.py`.
-3. Nhấn nút **Run**.
-4. Sử dụng các chức năng theo menu hiển thị trong cửa sổ console.
-
----
-
-## 10. Menu chương trình
+## 8. Menu chương trình
 
 Khi chạy chương trình, hệ thống sẽ hiển thị menu như sau:
 
-```text
-=============================================
-      HỆ THỐNG QUẢN LÝ BỆNH ÁN PHÒNG KHÁM
-=============================================
-1. Tiếp nhận bệnh nhân mới (Nhập dữ liệu)
-2. Hiển thị danh sách bệnh án (Bảng định dạng)
-3. Tìm kiếm bệnh nhân (Theo ID hoặc Tên)
-4. Sắp xếp danh sách bệnh nhân
-5. Thống kê & Tính toán số liệu
-6. Chỉnh sửa thông tin bệnh nhân
-7. Xóa thông tin bệnh nhân
-8. Lưu dữ liệu và xuất báo cáo (.txt)
-9. Thoát chương trình
----------------------------------------------
-```
+    =============================================
+          HỆ THỐNG QUẢN LÝ BỆNH ÁN PHÒNG KHÁM
+    =============================================
+    1. Tiếp nhận bệnh nhân mới (Nhập dữ liệu)
+    2. Hiển thị danh sách bệnh án (Bảng định dạng)
+    3. Tìm kiếm bệnh nhân (Theo ID hoặc Tên)
+    4. Sắp xếp danh sách bệnh nhân
+    5. Thống kê & Tính toán số liệu
+    6. Chỉnh sửa thông tin bệnh nhân
+    7. Xóa thông tin bệnh nhân
+    8. Lưu dữ liệu và xuất báo cáo (.txt)
+    9. Thoát chương trình
+    ---------------------------------------------
 
-Người dùng nhập số từ 1 đến 9 để chọn chức năng tương ứng.
+Người dùng nhập số từ `1` đến `9` để chọn chức năng tương ứng.
+
+Nếu người dùng nhập sai lựa chọn, chương trình sẽ thông báo lỗi và yêu cầu nhập lại thay vì bị dừng đột ngột.
 
 ---
 
-## 11. Kiểm tra dữ liệu đầu vào
+## 9. Kiểm tra dữ liệu đầu vào
 
-Chương trình có kiểm tra một số dữ liệu quan trọng khi nhập thông tin bệnh nhân.
+Chương trình có kiểm tra dữ liệu đầu vào đối với các thông tin quan trọng.
 
 Các điều kiện kiểm tra gồm:
 
-- Mã bệnh nhân không được để trống.
-- Mã bệnh nhân không được trùng với bệnh nhân đã có trong hệ thống.
-- Tuổi phải là số nguyên.
-- Tuổi phải nằm trong khoảng hợp lý, từ 1 đến 149.
-
-Các trường họ tên và chẩn đoán là dữ liệu dạng văn bản nên chương trình cho phép người dùng nhập linh hoạt hơn.
+| Dữ liệu | Cách kiểm tra |
+|---|---|
+| Mã bệnh nhân | Không được để trống |
+| Mã bệnh nhân | Không được trùng với bệnh nhân đã có |
+| Tên bệnh nhân | Không được để trống |
+| Tuổi | Phải là số nguyên |
+| Tuổi | Phải nằm trong khoảng hợp lý từ 1 đến 149 |
 
 ---
 
-## 12. Các hàm chính trong chương trình
+## 10. Các hàm chính trong chương trình
+
+Chương trình được chia thành nhiều hàm nhỏ để dễ quản lý, đúng định hướng lập trình thủ tục và thiết kế Top-Down.
 
 | Tên hàm | Chức năng |
 |---|---|
-| `display_menu()` | Hiển thị menu chính |
-| `load_from_file()` | Tải dữ liệu từ file JSON |
-| `save_to_file()` | Lưu dữ liệu vào file JSON |
-| `build_pretty_table()` | Tạo bảng hiển thị dữ liệu |
-| `export_report()` | Xuất báo cáo ra file TXT |
+| `display_menu()` | Hiển thị menu chính của chương trình |
+| `load_from_file()` | Tải dữ liệu bệnh nhân từ file JSON |
+| `save_to_file()` | Lưu dữ liệu bệnh nhân vào file JSON |
+| `build_pretty_table()` | Tạo bảng hiển thị danh sách bệnh nhân |
+| `export_report()` | Xuất báo cáo thống kê ra file TXT |
 | `add_patient()` | Thêm bệnh nhân mới |
 | `display_patients()` | Hiển thị danh sách bệnh nhân |
-| `search_patient()` | Tìm kiếm bệnh nhân |
+| `search_patient()` | Tìm kiếm bệnh nhân theo ID hoặc tên |
 | `sort_patients()` | Sắp xếp danh sách bệnh nhân |
-| `statistics_patients()` | Thống kê dữ liệu bệnh nhân |
+| `statistics_patients()` | Thống kê và tính toán số liệu |
 | `update_patient()` | Chỉnh sửa thông tin bệnh nhân |
-| `delete_patient()` | Xóa thông tin bệnh nhân |
+| `delete_patient()` | Xóa bệnh nhân khỏi danh sách |
 | `main()` | Điều khiển luồng chạy chính của chương trình |
 
----
-
-## 13. Chức năng nâng cao
-
-Ngoài các chức năng cơ bản, chương trình còn có một số chức năng nâng cao:
-
-1. **Tìm kiếm gần đúng**
-
-   Người dùng có thể nhập một phần tên bệnh nhân để tìm kiếm thay vì phải nhập chính xác toàn bộ tên.
-
-2. **Thống kê theo nhóm**
-
-   Chương trình phân loại bệnh nhân theo nhóm tuổi gồm trẻ em, người lớn và người già.
-
-3. **Lưu trữ dữ liệu bằng JSON**
-
-   Chương trình sử dụng file JSON để lưu trữ dữ liệu có cấu trúc, giúp việc đọc và ghi dữ liệu thuận tiện hơn.
-
-4. **Chỉnh sửa và xóa dữ liệu**
-
-   Chương trình cho phép cập nhật hoặc xóa thông tin bệnh nhân theo mã ID, giúp hệ thống có tính ứng dụng thực tế hơn.
+Việc chia chương trình thành nhiều hàm giúp mã nguồn rõ ràng hơn, dễ kiểm tra lỗi và dễ mở rộng thêm chức năng nếu cần.
 
 ---
 
-## 14. Ví dụ kết quả hiển thị
+## 11. Ví dụ sử dụng chương trình
 
-Ví dụ hiển thị danh sách bệnh nhân:
+### 11.1. Ví dụ thêm bệnh nhân
 
-```text
-+------------------------------------------------+
-|              DANH SÁCH BỆNH NHÂN              |
-+------+----------------+------+----------------+
-| ID   | Họ Tên         | Tuổi | Chẩn đoán      |
-+------+----------------+------+----------------+
-| BN01 | Nguyen Van A   | 25   | Cam cum        |
-| BN02 | Tran Thi B     | 40   | Dau dau        |
-+------+----------------+------+----------------+
-```
+    Nhập mã bệnh nhân: BN01
+    Nhập họ tên: Nguyen Van A
+    Nhập tuổi: 25
+    Nhập chẩn đoán: Cam cum
+    => Đã thêm bệnh nhân thành công!
 
-Ví dụ thống kê:
+### 11.2. Ví dụ hiển thị danh sách bệnh nhân
 
-```text
-===================================
-      BÁO CÁO THỐNG KÊ Y TẾ
-===================================
-Tổng số bệnh nhân: 2
-Độ tuổi trung bình: 32.5
------------------------------------
-1. Trẻ em (<18t):        0 BN (0.0%)
-2. Người lớn (18-60t):   2 BN (100.0%)
-3. Người già (>60t):     0 BN (0.0%)
-===================================
-```
+    +------+----------------+------+----------------+
+    | ID   | Họ Tên         | Tuổi | Chẩn đoán      |
+    +------+----------------+------+----------------+
+    | BN01 | Nguyen Van A   | 25   | Cam cum        |
+    | BN02 | Tran Thi B     | 40   | Dau dau        |
+    +------+----------------+------+----------------+
 
----
+### 11.3. Ví dụ thống kê
 
-## 15. Ghi chú
-
-- Chương trình chạy trên giao diện dòng lệnh.
-- Dữ liệu được tự động tải từ file `patients.json` khi chương trình bắt đầu.
-- Dữ liệu được lưu lại khi người dùng chọn chức năng lưu hoặc thoát chương trình.
-- File `patients_report.txt` được tạo khi người dùng chọn chức năng xuất báo cáo.
-- Nếu file `patients.json` chưa tồn tại, chương trình sẽ bắt đầu với danh sách bệnh nhân rỗng.
-- Sau khi thêm, chỉnh sửa hoặc xóa dữ liệu, người dùng nên chọn chức năng lưu hoặc thoát chương trình để dữ liệu được ghi vào file.
+    ===================================
+          BÁO CÁO THỐNG KÊ Y TẾ
+    ===================================
+    Tổng số bệnh nhân: 2
+    Độ tuổi trung bình: 32.5
+    -----------------------------------
+    1. Trẻ em (<18t):        0 BN (0.0%)
+    2. Người lớn (18-60t):   2 BN (100.0%)
+    3. Người già (>60t):     0 BN (0.0%)
+    ===================================
 
 ---
 
-## 16. Thông tin sinh viên
+## 12. Chức năng nâng cao đã thực hiện
+
+Ngoài các chức năng cơ bản, chương trình có thêm một số chức năng nâng cao:
+
+### 12.1. Tìm kiếm gần đúng
+
+Người dùng có thể nhập một phần tên bệnh nhân để tìm kiếm. Ví dụ, nếu có bệnh nhân tên `Nguyen Van A`, người dùng chỉ cần nhập `Nguyen` hoặc `Van` thì chương trình vẫn có thể tìm được.
+
+Chức năng này đáp ứng yêu cầu **Advanced Search & Filter**.
+
+### 12.2. Thống kê theo nhóm tuổi
+
+Chương trình không chỉ tính tổng số bệnh nhân và tuổi trung bình, mà còn phân loại bệnh nhân theo nhóm tuổi:
+
+- Trẻ em
+- Người lớn
+- Người già
+
+Chức năng này đáp ứng yêu cầu **Advanced Statistics – Grouping data**.
+
+### 12.3. Lưu trữ dữ liệu bằng JSON
+
+Chương trình sử dụng file `patients.json` để lưu trữ và đọc lại danh sách bệnh nhân.
+
+Chức năng này đáp ứng yêu cầu **Advanced Storage – JSON**.
+
+### 12.4. Chỉnh sửa và xóa dữ liệu
+
+Chương trình có thêm chức năng chỉnh sửa và xóa bệnh nhân theo mã ID. Đây là hai chức năng giúp chương trình có tính thực tế hơn trong quá trình quản lý dữ liệu.
+
+---
+
+## 13. Tự đánh giá theo thang điểm
+
+Dựa trên tiêu chí chấm điểm của đề bài, chương trình được tự đánh giá như sau:
+
+| STT | Tiêu chí | Điểm tối đa | Tự chấm | Giải thích |
+|---|---|---:|---:|---|
+| 1 | CLI Menu System | 1.0 | 1.0 | Có menu rõ ràng, chạy trên console, dùng vòng lặp để lặp lại menu cho đến khi thoát |
+| 2 | Data Input & Validation | 1.0 | 1.0 | Thêm được bệnh nhân mới, có kiểm tra ID rỗng, ID trùng và tuổi phải là số |
+| 3 | Data Display | 1.0 | 1.0 | Dữ liệu được hiển thị bằng bảng PrettyTable rõ ràng, dễ nhìn |
+| 4 | Basic Search | 1.0 | 1.0 | Tìm kiếm được bệnh nhân theo ID hoặc tên |
+| 5 | Sorting Mechanism | 1.0 | 1.0 | Có chức năng sắp xếp danh sách bệnh nhân theo tên hoặc tuổi |
+| 6 | Basic Calculation | 1.0 | 1.0 | Có tính tổng số bệnh nhân, tuổi trung bình và thống kê nhóm tuổi |
+| 7 | TXT File Handling | 1.0 | 1.0 | Có xuất báo cáo ra file TXT, dữ liệu chính được lưu bằng JSON thay vì TXT theo yêu cầu nâng cao |
+| 8 | Advanced Complex Logic | 1.0 | 1.0 | Có tìm kiếm gần đúng và thống kê theo nhóm tuổi |
+| 9 | JSON / DBMS | 1.0 | 1.0 | Có lưu và tải dữ liệu bằng file JSON có cấu trúc |
+| 10 | Git & Modular Code | 1.0 | 1.0 | Code được chia thành nhiều hàm rõ ràng và có README; repository GitHub có trên 3 commit |
+
+### Tổng điểm tự đánh giá: 10 / 10
+
+---
+
+## 14. Thông tin sinh viên
 
 Sinh viên thực hiện: **Trần Hạnh Nguyên**
 
@@ -291,5 +364,4 @@ Môn học: **Phương pháp lập trình**
 
 Giảng viên: **Trần Văn Long**
 
-Khoa: **Tin Học**
-
+Khoa: **Tin học**
